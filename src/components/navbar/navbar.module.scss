@@ -1,0 +1,41 @@
+.header {
+	width: 100%;
+	background-color: #000;
+	.navbar {
+		max-width: 1200px;
+		margin: auto;
+		padding: 10px 0px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		
+		.navbar__brand {
+			display: flex;
+			align-items: center;
+			.navbar__brand-image {
+				width: 70px !important;
+			}
+		}
+
+
+		.navbar__list {
+			display: flex;
+			align-items: center;
+			gap: 30px;
+
+			.navbar__list-item {
+				.item__button {
+					background-color: transparent;
+					padding: 10px 15px;
+					border: 1px solid #fff;
+					border-radius: 15px;
+					width: 150px;
+					color: #fff;
+					cursor: pointer;
+				}
+			}
+
+			
+		}
+	}
+}
