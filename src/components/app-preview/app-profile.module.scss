@@ -1,0 +1,59 @@
+.app-preview {
+  height: 729px;
+  width: 340px;
+  border-radius: 3rem;
+  border: 8px solid #ffffff;
+  overflow: hidden;
+  background: black;
+  padding: 10px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .profilePic {
+    margin-top: 10px;
+    height: 5rem !important;
+    width: 5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #ffffff;
+  }
+
+  .name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    color: #ffffff;
+  }
+
+  .about {
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    width: 80%;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .buttons{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .watermark {
+    margin-top: auto;
+    width: 100%;
+    color: #ffffff;
+    text-align: center;
+    border-top: 1px solid #ffffff;
+    padding-top: 5px;
+
+    .watermark-text {
+      font-size: 12px;
+    }
+  }
+}
+

@@ -1,0 +1,46 @@
+.custom-select {
+  height: 50px;
+  padding: 10px !important;
+  background-color: transparent;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 14px;
+  line-height: 30px;
+  color: white;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid #ffffff;
+  appearance: none; /* Removes default arrow */
+  width: 100%;
+}
+
+
+.custom-select-container {
+  position: relative;
+  display: inline-block;
+}
+
+.custom-select::after {
+  content: '\25BC'; /* Down arrow */
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.custom-select-container .custom-select[disabled] {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.custom-select-container .custom-select .custom-option {
+  background-color: black;
+  color: white;
+  padding: 5px 10px;
+}
+
+.custom-select-container .custom-select .custom-option:hover {
+  background-color: #333;
+}

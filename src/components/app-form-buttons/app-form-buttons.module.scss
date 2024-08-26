@@ -1,0 +1,34 @@
+.app-form-buttons {
+  padding: 15px;
+  background: black;
+  border: 1px solid white;
+  margin-top: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+
+  .buttons-inp {
+    padding: 10px;
+    border: 1px solid #fff;
+    background-color: transparent;
+    border-radius: 5px;
+    color: #fff;
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: #AAAAAA;
+    }
+  }
+
+  .buttons-btn {
+    padding: 10px;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+  }
+}

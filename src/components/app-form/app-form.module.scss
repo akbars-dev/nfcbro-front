@@ -1,4 +1,11 @@
 .app-form {
-	width: 60% !important;
+	width: 45% !important;
 	padding: 20px;
+	height: 85vh;
+	overflow-y: scroll;
+
+	/* Scrollbar track */
+	&::-webkit-scrollbar {
+		width: 0; /* Width of the scrollbar */
+	}
 }
