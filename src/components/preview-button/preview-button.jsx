@@ -14,7 +14,7 @@ const PreviewButton = ({ label, bgColor, textColor, url, type, animation, remove
             </dt>
         </a>
 
-        <button style={{ color: bgColor, border: `1px solid ${bgColor}` }} onClick={(e) => removeButton(index)} className={styles['del-btn']}>O'chirish</button>
+        {removeButton && <button style={{ color: bgColor, border: `1px solid ${bgColor}` }} className={styles['del-btn']}>O'chirish</button>}
     </button>
     else if (type === 'telefon') {
         return <button style={{ background: textColor }} className={styles['preview-button']}>
@@ -28,7 +28,8 @@ const PreviewButton = ({ label, bgColor, textColor, url, type, animation, remove
                 </dt>
             </a>
 
-            <button style={{ color: bgColor, border: `1px solid ${bgColor}` }} className={styles['del-btn']}>O'chirish</button>
+
+            {removeButton && <button style={{ color: bgColor, border: `1px solid ${bgColor}` }} className={styles['del-btn']}>O'chirish</button>}
         </button>
     }
 

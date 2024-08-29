@@ -16,7 +16,6 @@ class Api {
 
 	async createPage(name, about, profilePic, backgroundPic, watermark, buttons, username, password) {
 		try {
-			// Create form data
 			const formData = new FormData()
 			formData.append('name', name)
 			formData.append('about', about)
@@ -38,6 +37,15 @@ class Api {
 		} catch (error) {
 			console.error('Error creating page:', error)
 			throw error // Re-throw the error for further handling if needed
+		}
+	}
+
+	async getPageData(username) {
+		try {
+			const page = await axios.get(this.baseUrl + `/pages/get/${username}`)
+			return page.data.data
+		} catch (e) {
+			window.location.href = '/404'
 		}
 	}
 }

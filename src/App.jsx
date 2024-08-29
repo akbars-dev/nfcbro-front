@@ -1,8 +1,10 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import ProtectedRoute from './components/protected-router/protected-router'
 import Admin from './layout/admin'
+import NotFound from './pages/404'
 import AdminLoginPage from './pages/AdminLogin'
 import Create from './pages/Create'
+import PageProfile from './pages/PageProfile'
 
 function App() {
 	return (
@@ -16,6 +18,10 @@ function App() {
 					} />
 				</Route>
 				<Route path='/admin/login' element={<AdminLoginPage />} />
+
+				{/* costumer routers   */}
+				<Route path='/:username' element={<PageProfile />} />
+				<Route path='/404' element={<NotFound />} />
 			</Routes>
 		</Router>
 	)
