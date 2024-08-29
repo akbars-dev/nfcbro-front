@@ -1,44 +1,40 @@
-import PropTypes from 'prop-types';
-import styles from './preview-button.module.scss';
+import styles from './preview-button.module.scss'
 
-const PreviewButton = ({label, bgColor, textColor, url, type, animation}) => {
-    console.log(animation)
+const PreviewButton = ({ label, bgColor, textColor, url, type, animation, removeButton, index }) => {
 
-    if (type === 'oddiy') return <button style={{background: bgColor}} className={styles['preview-button']}>
-        <a className={styles['button-link']} href="#">
+
+    if (type === 'tugma') return <button style={{ background: textColor }} className={styles['preview-button']}>
+        <a className={styles['button-link']} href={url}>
             <dt className={styles['button-detail-item']}>
                 <div className={styles['details']}>
-                    <p style={{color: textColor}} className={styles['details-text']}>
+                    <p style={{ color: bgColor }} className={styles['details-text']}>
                         {label}
                     </p>
                 </div>
             </dt>
         </a>
+
+        <button style={{ color: bgColor, border: `1px solid ${bgColor}` }} onClick={(e) => removeButton(index)} className={styles['del-btn']}>O'chirish</button>
     </button>
     else if (type === 'telefon') {
-        return <button style={{background: bgColor}} className={styles['preview-button']}>
+        return <button style={{ background: textColor }} className={styles['preview-button']}>
             <a className={styles['button-link']} href={`tel:${url}`}>
                 <dt className={styles['button-detail-item']}>
                     <div className={styles['details']}>
-                        <p style={{color: textColor}} className={styles['details-text']}>
+                        <p style={{ color: bgColor }} className={styles['details-text']}>
                             {label}
                         </p>
                     </div>
                 </dt>
             </a>
+
+            <button style={{ color: bgColor, border: `1px solid ${bgColor}` }} className={styles['del-btn']}>O'chirish</button>
         </button>
     }
 
-};
+}
 
 
-PreviewButton.propTypes = {
-    label: PropTypes.string.isRequired,
-    bgColor: PropTypes.string.isRequired,
-    textColor: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    animation: PropTypes.string.isRequired,
-};
 
-export default PreviewButton;
+
+export default PreviewButton

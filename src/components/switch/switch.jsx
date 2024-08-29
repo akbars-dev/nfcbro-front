@@ -1,15 +1,15 @@
-import { useState } from 'react'
 import './SwitchButton.scss' // Import the CSS file for styling
 
-function SwitchButton() {
-	const [isOn, setIsOn] = useState(false)
+function SwitchButton({ setWatermark, watermark }) {
 
 	const toggleSwitch = () => {
-		setIsOn(!isOn)
+		setWatermark(!watermark)
 	}
 
+
+
 	return (
-		<div className={`switch ${isOn ? 'on' : 'off'}`} onClick={toggleSwitch}>
+		<div className={`switch ${watermark ? 'on' : 'off'}`} onClick={toggleSwitch}>
 			<div className="switch-handle"></div>
 		</div>
 	)

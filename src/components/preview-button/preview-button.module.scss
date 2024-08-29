@@ -2,5 +2,15 @@
   width: 98% !important;
   border: none;
   padding: 15px 5px;
+  display: flex;
+  justify-content: space-around;
   border-radius: 5px;
+  align-items: center;
+
+  .del-btn {
+    background-color: transparent;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 }

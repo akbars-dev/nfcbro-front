@@ -9,12 +9,20 @@
   width: 100%;
   gap: 20px;
 
+
+  .input-error {
+    border-color: red;
+  }
+
+
+
   .buttons-inp {
     padding: 10px;
     border: 1px solid #fff;
     background-color: transparent;
     border-radius: 5px;
     color: #fff;
+
     &:focus {
       outline: none;
     }
@@ -30,5 +38,16 @@
     border: 1px solid white;
     border-radius: 5px;
     color: white;
+    cursor: pointer;
+  }
+
+  .create-btn {
+    margin-top: 10px;
+    cursor: pointer;
+    padding: 10px;
+    background: white;
+    border-radius: 5px;
+    font-weight: 700;
+    color: black;
   }
 }
