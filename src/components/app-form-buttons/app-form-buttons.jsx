@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Select from "../select/select.jsx"
 import styles from './app-form-buttons.module.scss'
 
-function AppFormButtons({ setButtons, createPage }) {
+function AppFormButtons({ setButtons, createPage, updatePage, update }) {
 
     // Manage the buttons state locally
     const [buttons, updateButtons] = useState([])
@@ -105,7 +105,11 @@ function AppFormButtons({ setButtons, createPage }) {
                 onChange={(e) => setAnimation(e.target.value)}
             />
             <button onClick={addButton} className={styles['buttons-btn']}>Tugma qo'shish</button>
-            <button onClick={(e) => createPage()} className={styles['create-btn']}>Yaratish</button>
+            {update ?
+                <button onClick={(e) => updatePage()} className={styles['create-btn']}>Yangilash</button> :
+                <button onClick={(e) => createPage()} className={styles['create-btn']}>Yaratish</button>
+            }
+
         </div>
     )
 }

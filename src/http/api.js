@@ -40,6 +40,33 @@ class Api {
 		}
 	}
 
+	async updatePage(id, name, about, profilePic, backgroundPic, watermark, buttons, username, password) {
+		try {
+			const formData = new FormData()
+			formData.append('name', name)
+			formData.append('about', about)
+			formData.append('username', username)
+			formData.append('password', password)
+			formData.append('profilePic', profilePic)
+			formData.append('backgroundPic', backgroundPic)
+			formData.append('watermark', watermark)
+			formData.append('buttons', JSON.stringify(buttons))  // Convert buttons array/object to JSON string
+
+
+			const response = await axios.put(this.baseUrl + `/pages/update/${id}`, formData, {
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},
+			})
+
+			return response.data.data
+		} catch (error) {
+			console.error('Error updating page:', error)
+			throw error
+		}
+	}
+
+
 	async getPageData(username) {
 		try {
 			const page = await axios.get(this.baseUrl + `/pages/get/${username}`)

@@ -5,6 +5,7 @@ import NotFound from './pages/404'
 import AdminLoginPage from './pages/AdminLogin'
 import Create from './pages/Create'
 import PageProfile from './pages/PageProfile'
+import Update from './pages/Update'
 
 function App() {
 	return (
@@ -14,6 +15,12 @@ function App() {
 					<Route path="create" element={
 						<ProtectedRoute>
 							<Create />
+						</ProtectedRoute>
+					} />
+
+					<Route path='update/:pageId' element={
+						<ProtectedRoute>
+							<Update />
 						</ProtectedRoute>
 					} />
 				</Route>

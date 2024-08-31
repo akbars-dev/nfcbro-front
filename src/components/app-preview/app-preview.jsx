@@ -12,6 +12,8 @@ function AppPreview({
 	setButtons
 }) {
 	const removeButton = (index) => {
+		console.log(index)
+
 		setButtons(buttons => buttons.filter((_, i) => i !== index))
 	}
 

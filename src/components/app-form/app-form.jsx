@@ -25,7 +25,15 @@ function AppForm({
 	setWatermark,
 	setButtons,
 	watermark,
-	createPage
+	createPage,
+	name,
+	about,
+	username,
+	password,
+	profilePic,
+	backroundPic,
+	update,
+	updatePage,
 }) {
 
 
@@ -42,8 +50,19 @@ function AppForm({
 				setWatermark={setWatermark}
 				setBackroundPic={setBackroundPic}
 				watermark={watermark}
+				name={name}
+				about={about}
+				username={username}
+				password={password}
+				profilePic={profilePic}
+				backroundPic={backroundPic}
 			/>
-			<AppFormButtons createPage={createPage} setButtons={setButtons} />
+			<AppFormButtons
+				updatePage={updatePage}
+				createPage={createPage}
+				update={update}
+				setButtons={setButtons}
+			/>
 		</div>
 	)
 }

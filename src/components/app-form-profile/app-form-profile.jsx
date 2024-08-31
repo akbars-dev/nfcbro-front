@@ -10,7 +10,13 @@ function AppFormProfile({
 	setProfilePic,
 	setBackroundPic,
 	setWatermark,
-	watermark
+	watermark,
+	name,
+	about,
+	username,
+	password,
+	profilePic,
+	backroundPic,
 }) {
 	const fileInputRef = useRef(null)
 	const bgInputRef = useRef(null)
@@ -65,6 +71,7 @@ function AppFormProfile({
 				className={styles['profile-inp']}
 				type="text"
 				placeholder="Ismingizni yozing"
+				value={name} // Bind value to the name prop
 				onChange={(e) => setName(e.target.value)} // Update name state
 			/>
 
@@ -73,6 +80,7 @@ function AppFormProfile({
 				placeholder="O'zingiz haqingizda yozing"
 				className={styles['profile-area']}
 				id="profile-area"
+				value={about} // Bind value to the about prop
 				onChange={(e) => setAbout(e.target.value)} // Update about state
 			></textarea>
 
@@ -93,6 +101,7 @@ function AppFormProfile({
 				className={styles['profile-inp']}
 				type="text"
 				placeholder="Foydalanuvchi nomini yozing"
+				value={username} // Bind value to the username prop
 				onChange={(e) => setUsername(e.target.value)} // Update username state
 			/>
 
@@ -101,6 +110,7 @@ function AppFormProfile({
 				className={styles['profile-inp']}
 				type="password"
 				placeholder="Parolni yozing"
+				value={password} // Bind value to the password prop
 				onChange={(e) => setPassword(e.target.value)} // Update password state
 			/>
 
