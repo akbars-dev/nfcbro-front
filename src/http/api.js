@@ -5,8 +5,25 @@ class Api {
 		this.baseUrl = `http://${domain}/api`
 	}
 
+	async checkToken(token) {
+		const response = await axios.post(this.baseUrl + '/check/token', {
+			token: token
+		})
+
+		return response.data
+	}
+
 	async login(username, password) {
 		const response = await axios.post(this.baseUrl + '/admin/login', {
+			username: username,
+			password: password
+		})
+
+		return response.data
+	}
+
+	async pagesLogin(username, password) {
+		const response = await axios.post(this.baseUrl + '/pages/login', {
 			username: username,
 			password: password
 		})

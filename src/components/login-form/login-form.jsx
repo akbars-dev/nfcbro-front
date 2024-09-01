@@ -1,6 +1,6 @@
 import styles from './admin-form.module.scss'
 
-function AdminForm({ setUsername, setPassword, handleSubmit }) {
+function LoginForm({ setUsername, setPassword, handleSubmit }) {
 	return <div className={styles['admin-form']}>
 		<span className={styles['form-title']}>Akkauntga kiring</span>
 		<input onInput={(e) => setUsername(e.target.value)} className={styles['form-input']} type="text" placeholder='Username kiriting' />
@@ -9,4 +9,4 @@ function AdminForm({ setUsername, setPassword, handleSubmit }) {
 	</div>
 }
 
-export default AdminForm
+export default LoginForm

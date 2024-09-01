@@ -1,12 +1,43 @@
-import React from 'react'
-import { Navigate } from 'react-router-dom'
+import { useEffect } from 'react'
+import api from '../../http/api'
 
-const ProtectedRoute = ({ children }) => {
-	const token = localStorage.getItem('token')
+const ProtectedRoute = ({ children, type }) => {
+	useEffect(() => {
+		async function fetchData() {
+			if (type == 'costumer') {
+				const token = localStorage.getItem('costumerAuth')
+				if (!token) {
+					return window.location.href = "/"
+				}
 
-	if (!token) {
-		return <Navigate to="/admin/login" />
-	}
+				const data = await api.checkToken(token)
+
+
+				console.log(data.data.isAuth == false)
+
+
+				if (data.data.isAuth == false) {
+					return window.location.href = "/"
+				}
+			} else if (type == 'admin') {
+				const token = localStorage.getItem('token')
+				console.log('admin')
+
+				if (!token) {
+					return window.location.href = "/admin/login"
+				}
+
+
+				const data = await api.checkToken(token)
+
+				if (data.isAuth == false) {
+					return window.location.href = "/admin/login"
+				}
+			}
+		}
+
+		fetchData()
+	}, [])
 
 	return children
 }
