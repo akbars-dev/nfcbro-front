@@ -36,7 +36,7 @@ function PageProfile() {
 			document.body.style.backgroundSize = ''
 			document.body.style.backgroundPosition = ''
 		}
-	}, [data, loading])  // Trigger this effect when data or loading changes
+	}, [data, loading])
 
 	if (loading) return <p>Loading...</p>
 	if (error) return <p>Error: {error.message}</p>

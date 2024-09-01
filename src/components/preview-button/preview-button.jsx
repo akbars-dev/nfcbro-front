@@ -1,6 +1,17 @@
 import styles from './preview-button.module.scss'
 
-const PreviewButton = ({ label, bgColor, textColor, url, type, animation, removeButton, index }) => {
+const PreviewButton = ({
+    label,
+    bgColor,
+    textColor,
+    url,
+    type,
+    animation,
+    update,
+    removeButton,
+    index,
+    isUpdate
+}) => {
     return (
         <div style={{ background: textColor }} className={styles['preview-button']}>
             <a className={styles['button-link']} href={type === 'telefon' ? `tel:${url}` : url}>
@@ -20,6 +31,17 @@ const PreviewButton = ({ label, bgColor, textColor, url, type, animation, remove
                     onClick={() => removeButton(index)}
                 >
                     O'chirish
+                </button>
+            )}
+
+
+            {isUpdate && (
+                <button
+                    style={{ color: bgColor, border: `1px solid ${bgColor}` }}
+                    className={styles['del-btn']}
+                    onClick={() => update(index)}
+                >
+                    Yangilash
                 </button>
             )}
         </div>

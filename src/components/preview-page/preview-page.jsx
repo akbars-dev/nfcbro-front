@@ -1,5 +1,22 @@
+import { useState } from 'react'
+import api from '../../http/api'
 import PreviewButton from '../preview-button/preview-button'
 import styles from './preview-page.module.scss'
+
+function UpdateModal({ isOpen, onClose, updateButtonUrl, setNewUrl }) {
+	return (
+		<div className={isOpen ? styles['modal-open'] : styles['modal-closed']}>
+			<div className={styles['modal-content']}>
+				<p>O'zgartirish uchun url kiriting</p>
+				<input onInput={(e) => setNewUrl(e.target.value)} className='' type="text" placeholder='URL kiriting' />
+
+				<button onClick={updateButtonUrl}>Yangilash</button>
+				<button onClick={onClose}>Yopish</button>
+			</div>
+		</div>
+	)
+}
+
 
 function PreviewPage({
 	name,
@@ -7,7 +24,26 @@ function PreviewPage({
 	profilePic,
 	watermark,
 	buttons,
+	isUpdate
 }) {
+	const [isModalOpen, setIsModalOpen] = useState(false)
+	const [newUrl, setNewUrl] = useState()
+	const [index, setIndex] = useState()
+
+	const updateButtonUrl = async () => {
+		const button = buttons
+			.filter((_, i) => i === index)
+
+		await api.updateButton(button[0].id, newUrl)
+
+		setIsModalOpen(false)
+	}
+
+
+	const closeModal = () => {
+		setIsModalOpen(false)
+	}
+
 	return (
 		<section className={styles['preview-section']}>
 			{profilePic && (
@@ -31,6 +67,8 @@ function PreviewPage({
 							type={button.type}
 							animation={button.animation}
 							index={index}
+							isUpdate={isUpdate}
+							update={() => { setIsModalOpen(!isModalOpen), setIndex(index) }}
 						/>
 					))}
 				</div>
@@ -46,6 +84,8 @@ function PreviewPage({
 					</span>
 				</div>
 			)}
+
+			<UpdateModal updateButtonUrl={updateButtonUrl} setNewUrl={setNewUrl} isOpen={isModalOpen} onClose={closeModal} />
 		</section>
 	)
 }

@@ -102,3 +102,83 @@
 		}
 	}
 }
+
+
+
+.modal-open {
+	position: fixed; // Fixed positioning to overlay on top of other content
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5); // Semi-transparent black background
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000; // Ensure the modal is on top of other elements
+}
+
+.modal-closed {
+	display: none; // Hide the modal when it is not open
+}
+
+.modal-content {
+	background-color: #fff; // White background for the modal content
+	padding: 20px;
+	border-radius: 8px; // Rounded corners for a softer look
+	width: 80%; // Make the modal responsive
+	max-width: 400px; // Set a maximum width for larger screens
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); // Subtle shadow for depth
+	text-align: center; // Center align text inside the modal
+	animation: slideDown 0.3s ease-out; // Slide-down animation for the modal
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+@keyframes slideDown {
+	from {
+		transform: translateY(-20%);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.modal-content p {
+	font-size: 16px;
+	margin-bottom: 20px;
+	color: #333; // Dark grey text for better readability
+}
+
+.modal-content input {
+	padding: 8px 20px;
+	border-radius: 5px;
+	width: 100%;
+	border: 1px solid #000;
+}
+
+.modal-content button {
+	background-color: #4caf50;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+
+	&:hover {
+		background-color: #45a049;
+	}
+
+	&:active {
+		background-color: #388e3c;
+	}
+}
+
+.modal-content button:last-child {
+	background-color: #af4c4c;
+}

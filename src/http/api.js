@@ -57,6 +57,19 @@ class Api {
 		}
 	}
 
+	async updateButton(id, url) {
+		try {
+			const response = await axios.put(this.baseUrl + `/pages/update-button/${id}`, {
+				url: url
+			})
+
+			return response.data
+		} catch (error) {
+			console.error('Error updating page:', error)
+			throw error
+		}
+	}
+
 	async updatePage(id, name, about, profilePic, backgroundPic, watermark, buttons, username, password) {
 		try {
 			const formData = new FormData()
@@ -89,7 +102,9 @@ class Api {
 			const page = await axios.get(this.baseUrl + `/pages/get/${username}`)
 			return page.data.data
 		} catch (e) {
-			window.location.href = '/404'
+			console.log(e)
+
+			// window.location.href = '/404'
 		}
 	}
 }
