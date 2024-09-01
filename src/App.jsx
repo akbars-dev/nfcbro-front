@@ -1,13 +1,14 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+import Dashboard from './components/dashboard/dashboard'
 import ProtectedRoute from './components/protected-router/protected-router'
 import Admin from './layout/admin'
 import NotFound from './pages/404'
 import AdminLoginPage from './pages/AdminLogin'
 import CostumerLogin from './pages/CostumerLogin'
+import CostumerUpdate from './pages/CostumerUpdate'
 import Create from './pages/Create'
 import PageProfile from './pages/PageProfile'
 import Update from './pages/Update'
-import CostumerUpdate from './pages/CostumerUpdate'
 
 function App() {
 	return (
@@ -17,6 +18,12 @@ function App() {
 					<Route path="create" element={
 						<ProtectedRoute type="admin">
 							<Create />
+						</ProtectedRoute>
+					} />
+
+					<Route path='dashboard' element={
+						<ProtectedRoute type="admin">
+							<Dashboard />
 						</ProtectedRoute>
 					} />
 

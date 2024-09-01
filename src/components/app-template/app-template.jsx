@@ -1,10 +1,10 @@
 import styles from './app-template.module.scss'
 
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import api from '../../http/api'
 import AppForm from '../app-form/app-form'
 import AppPreview from '../app-preview/app-preview'
-
 
 function AppTemplate({ update, pageId }) {
 	const [name, setName] = useState("")
@@ -15,6 +15,8 @@ function AppTemplate({ update, pageId }) {
 	const [backroundPic, setBackroundPic] = useState("")
 	const [watermark, setWatermark] = useState(false)
 	const [buttons, setButtons] = useState(null)
+	const navigate = useNavigate()
+
 
 	useEffect(() => {
 		async function fetchData() {
@@ -45,7 +47,19 @@ function AppTemplate({ update, pageId }) {
 			password
 		)
 
-		console.log(data)
+
+
+		window.open(`/${username}`, '_blank', 'noopener,noreferrer')
+		navigate("/admin/create")
+
+		setName("")
+		setAbout("")
+		setUsername("")
+		setPassword("")
+		setProfilePic(null)
+		setBackroundPic(null)
+		setWatermark(false)
+		setButtons(null)
 	}
 
 	const updatePage = async () => {

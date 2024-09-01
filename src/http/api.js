@@ -5,6 +5,17 @@ class Api {
 		this.baseUrl = `http://${domain}/api`
 	}
 
+
+	async deletePage(id) {
+		const response = await axios.delete(this.baseUrl + `/pages/delete/${id}`)
+		return response.data
+	}
+
+	async allPages() {
+		const response = await axios.get(this.baseUrl + '/pages/all')
+		return response.data
+	}
+
 	async checkToken(token) {
 		const response = await axios.post(this.baseUrl + '/check/token', {
 			token: token
