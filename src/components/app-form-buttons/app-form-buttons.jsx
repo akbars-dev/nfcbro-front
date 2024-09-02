@@ -98,9 +98,8 @@ function AppFormButtons({ setButtons, createPage, updatePage, update }) {
             <label>Animatsiya turini tanlang: </label>
             <Select
                 options={[
-                    { value: "animation-1", label: "Animation 1" },
-                    { value: "animation-2", label: "Animation 2" },
-                    { value: "animation-3", label: "Animation 3" },
+                    { value: "animation-1", label: "Tada animation" },
+                    { value: "animation-2", label: "Blink animation" },
                 ]}
                 onChange={(e) => setAnimation(e.target.value)}
             />

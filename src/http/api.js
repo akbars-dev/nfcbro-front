@@ -113,9 +113,7 @@ class Api {
 			const page = await axios.get(this.baseUrl + `/pages/get/${username}`)
 			return page.data.data
 		} catch (e) {
-			console.log(e)
-
-			// window.location.href = '/404'
+			window.location.href = '/404'
 		}
 	}
 }

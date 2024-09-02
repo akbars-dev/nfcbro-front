@@ -16,6 +16,7 @@ function PageProfile() {
 				setData(response)
 			} catch (err) {
 				setError(JSON.parse(JSON.stringify(err.response.data.message)))
+				window.location.href = '/404'
 			} finally {
 				setLoading(false)
 			}

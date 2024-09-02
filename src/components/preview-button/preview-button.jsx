@@ -12,8 +12,18 @@ const PreviewButton = ({
     index,
     isUpdate
 }) => {
+    // Determine the animation class based on the animation prop
+    const animationClass = animation === 'animation-1'
+        ? styles['animation-1']
+        : animation === 'animation-2'
+            ? styles['animation-2']
+            : ''
+
     return (
-        <div style={{ background: textColor }} className={styles['preview-button']}>
+        <div
+            style={{ background: textColor }}
+            className={`${styles['preview-button']} ${animationClass}`}
+        >
             <a className={styles['button-link']} href={type === 'telefon' ? `tel:${url}` : url}>
                 <dt className={styles['button-detail-item']}>
                     <div className={styles['details']}>
@@ -33,7 +43,6 @@ const PreviewButton = ({
                     O'chirish
                 </button>
             )}
-
 
             {isUpdate && (
                 <button

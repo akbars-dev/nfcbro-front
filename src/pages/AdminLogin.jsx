@@ -16,11 +16,13 @@ function AdminLoginPage() {
 		return window.location.href = "/admin/dashboard"
 	}
 	return <>
-		<LoginForm
-			setUsername={setUsername}
-			setPassword={setPassword}
-			handleSubmit={handleSubmit}
-		/>
+		<div style={{ padding: '10px' }}>
+			<LoginForm
+				setUsername={setUsername}
+				setPassword={setPassword}
+				handleSubmit={handleSubmit}
+			/>
+		</div>
 	</>
 }
 
