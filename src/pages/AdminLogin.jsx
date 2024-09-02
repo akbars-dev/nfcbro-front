@@ -8,10 +8,12 @@ function AdminLoginPage() {
 
 	const handleSubmit = async (e) => {
 		const response = await api.login(username, password)
-		const token = response.data
+		const token = response.data.token
+		const adminUsername = response.data.username
 
 		localStorage.setItem('token', token)
-		return window.location.href = "/admin/create"
+		localStorage.setItem('admin-username', adminUsername)
+		return window.location.href = "/admin/dashboard"
 	}
 	return <>
 		<LoginForm

@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import searchIcon from '../../assets/images/search.svg'
 import api from '../../http/api'
 import styles from './dashboard.module.scss'
 
-
 function Dashboard() {
 	const [pages, setPages] = useState([])
+	const [searchQuery, setSearchQuery] = useState('')
 	const navigate = useNavigate()
-
 
 	async function handleDelete(id) {
 		await api.deletePage(id)
@@ -27,13 +27,32 @@ function Dashboard() {
 		fetchData()
 	}, [])
 
+	function handleSearchChange(event) {
+		setSearchQuery(event.target.value)
+	}
+
+	const filteredPages = pages.filter(page =>
+		page.username.toLowerCase().includes(searchQuery.toLowerCase())
+	)
+
 	return (
 		<section className={styles['dashboard']}>
 			<h1 className={styles['dashboard-title']}>Barcha veb saytlar</h1>
 
+			<div className={styles['dashboard-search']}>
+				<input
+					className={styles['dashboard-inp']}
+					type="text"
+					placeholder='Username orqali qidiring'
+					value={searchQuery}
+					onChange={handleSearchChange}
+				/>
+				<button className={styles['dashboard-icon']}><img width={'20px'} src={searchIcon} alt="Search Icon" /></button>
+			</div>
+
 			<div className={styles['dashboard__cards']}>
-				{pages.length > 0 ? (
-					pages.map((page, index) => (
+				{filteredPages.length > 0 ? (
+					filteredPages.map((page, index) => (
 						<div key={index} className={styles['dashboard__cards-item']}>
 							<span className={styles["item__title"]}>{page.name}</span>
 							<span className={styles['item__username']}><b>Username:</b> {page.username}</span>
@@ -49,7 +68,5 @@ function Dashboard() {
 		</section>
 	)
 }
-
-
 
 export default Dashboard

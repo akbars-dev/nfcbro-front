@@ -2,6 +2,41 @@
 	max-width: 1200px;
 	margin: auto;
 
+
+	.dashboard-search {
+		width: 100%;
+		border: 1px solid #fff;
+		position: relative;
+		height: 40px;
+		padding: 5px;
+		border-radius: 5px;
+		margin-bottom: 50px;
+
+
+		.dashboard-inp {
+			width: 100%;
+			background-color: transparent;
+			height: 100%;
+			border: none !important;
+			color: #fff;
+
+			&:focus {
+				outline: none;
+			}
+		}
+
+		.dashboard-icon {
+			position: absolute;
+			top: 10px;
+			right: 20px;
+			background-color: transparent;
+			border: none;
+			cursor: pointer;
+		}
+
+	}
+
+
 	.dashboard-title {
 		margin-top: 50px;
 		margin-bottom: 50px;
@@ -12,8 +47,8 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		gap: 10px;
-		justify-content: space-between;
+		gap: 60px;
+		// justify-content: space-between;
 
 
 		.dashboard__cards-item {

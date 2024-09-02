@@ -1,6 +1,7 @@
 .header {
 	width: 100%;
 	background-color: #000;
+
 	.navbar {
 		max-width: 1200px;
 		margin: auto;
@@ -8,15 +9,62 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		
+
 		.navbar__brand {
 			display: flex;
 			align-items: center;
+
 			.navbar__brand-image {
 				width: 70px !important;
 			}
 		}
 
+		.burger-menu {
+			display: none;
+			cursor: pointer;
+		}
+
+
+		.navbar__list-visible {
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100vh;
+			background-color: #000;
+			z-index: 1000;
+			justify-content: space-between;
+			padding: 30px 15px;
+
+			&.show {
+				display: flex;
+			}
+
+			&.hide {
+				display: none;
+			}
+
+			.visible__list {
+				display: flex;
+				flex-direction: column;
+				align-items: start;
+				gap: 10px;
+
+				.navbar__list-item {
+					font-size: 16px;
+
+					.item__button {
+						background-color: transparent;
+						padding: 10px 15px;
+						border: 1px solid #fff;
+						border-radius: 5px;
+						width: 180px;
+						color: #fff;
+						cursor: pointer;
+					}
+				}
+			}
+		}
 
 		.navbar__list {
 			display: flex;
@@ -35,7 +83,47 @@
 				}
 			}
 
-			
+
 		}
+	}
+}
+
+
+@media (max-width: 1200px) {
+	.navbar {
+		max-width: 1000px !important;
+		padding: 10x;
+	}
+}
+
+
+@media (max-width: 1000px) {
+	.navbar {
+		max-width: 800px !important;
+		padding: 10x;
+	}
+}
+
+
+@media (max-width: 800px) {
+	.navbar {
+		max-width: 600px !important;
+		padding: 10x;
+
+		.burger-menu {
+			display: block !important;
+		}
+
+		.navbar__list {
+			display: none !important;
+		}
+	}
+}
+
+
+@media (max-width: 600px) {
+	.navbar {
+		max-width: 100%;
+		padding: 5px 15px 5px 0px !important;
 	}
 }
