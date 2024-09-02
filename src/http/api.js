@@ -2,7 +2,7 @@ import axios from 'axios'
 
 class Api {
 	constructor(domain) {
-		this.baseUrl = `http://${domain}/api`
+		this.baseUrl = `${domain}/api`
 	}
 
 
@@ -118,4 +118,4 @@ class Api {
 	}
 }
 
-export default new Api('localhost:4200')
+export default new Api(import.meta.env.VITE_API_URL)

@@ -29,7 +29,7 @@ function CostumerUpdate() {
 	useEffect(() => {
 		console.log(data)
 
-		document.body.style.backgroundImage = `url(http://localhost:4200/${data?.backroundPic})`
+		document.body.style.backgroundImage = `url(${import.meta.env.VITE_API_URL}/${data?.backroundPic})`
 		document.body.style.backgroundSize = 'cover'
 		document.body.style.backgroundPosition = 'center'
 

@@ -13,6 +13,7 @@ function PageProfile() {
 		const fetchData = async () => {
 			try {
 				const response = await api.getPageData(username)
+				document.title = response.name
 				setData(response)
 			} catch (err) {
 				setError(JSON.parse(JSON.stringify(err.response.data.message)))
@@ -28,7 +29,7 @@ function PageProfile() {
 	useEffect(() => {
 		console.log(data)
 
-		document.body.style.backgroundImage = `url(http://localhost:4200/${data?.backroundPic})`
+		document.body.style.backgroundImage = `url(${import.meta.env.VITE_API_URL}/${data?.backroundPic})`
 		document.body.style.backgroundSize = 'cover'
 		document.body.style.backgroundPosition = 'center'
 

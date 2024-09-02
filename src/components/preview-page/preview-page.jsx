@@ -44,11 +44,13 @@ function PreviewPage({
 		setIsModalOpen(false)
 	}
 
+
+
 	return (
 		<section className={styles['preview-section']}>
 			{profilePic && (
 				<div className={styles['profilePic']}>
-					<img className={styles['pic-image']} src={`http://localhost:4200/${profilePic}`} alt="profilePic" />
+					<img className={styles['pic-image']} src={`${import.meta.env.VITE_API_URL}/${profilePic}`} alt="profilePic" />
 				</div>
 			)}
 
