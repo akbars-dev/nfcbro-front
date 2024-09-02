@@ -6,6 +6,13 @@
 
 	/* Scrollbar track */
 	&::-webkit-scrollbar {
-		width: 0; /* Width of the scrollbar */
+		width: 0;
+		/* Width of the scrollbar */
+	}
+}
+
+@media (max-width: 800px) {
+	.app-form {
+		width: 100% !important;
 	}
 }

@@ -15,7 +15,7 @@
 
 		.dashboard-inp {
 			width: 100%;
-			background-color: transparent;
+			background-color: #000;
 			height: 100%;
 			border: none !important;
 			color: #fff;
@@ -85,6 +85,58 @@
 			}
 		}
 	}
+}
+
+@media (max-width: 1200px) {
+	.dashboard {
+		max-width: 1000px !important;
+
+		.dashboard__cards {
+			.dashboard__cards-item {
+				width: 47% !important;
+			}
+		}
+
+	}
+}
 
 
+@media (max-width: 1000px) {
+	.dashboard {
+		max-width: 800px !important;
+
+		.dashboard__cards {
+			.dashboard__cards-item {
+				width: 46% !important;
+			}
+		}
+
+	}
+}
+
+
+@media (max-width: 800px) {
+	.dashboard {
+		max-width: 600px !important;
+
+		.dashboard__cards {
+			.dashboard__cards-item {
+				width: 100% !important;
+			}
+		}
+	}
+}
+
+@media (max-width: 600px) {
+	.dashboard {
+		max-width: 100% !important;
+		padding: 10px;
+
+
+		.dashboard__cards {
+			.dashboard__cards-item {
+				width: 100% !important;
+			}
+		}
+	}
 }
