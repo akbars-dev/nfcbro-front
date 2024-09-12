@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styles from './preview-button.module.scss'
 
 const PreviewButton = ({
@@ -21,11 +22,12 @@ const PreviewButton = ({
             : ''
 
     return (
-        <div
-            style={{ background: textColor }}
-            className={`${styles['preview-button']} ${animationClass}`}
-        >
-            <a className={styles['button-link']} href={type === 'telefon' ? `tel:${url}` : url}>
+        <Link className={styles['button-link']} to={type === 'telefon' ? `tel:${url}` : url}>
+
+            <div
+                style={{ background: textColor }}
+                className={`${styles['preview-button']} ${animationClass}`}
+            >
                 <dt className={styles['button-detail-item']}>
                     <div className={styles['details']}>
                         <p style={{ color: bgColor }} className={styles['details-text']}>
@@ -33,28 +35,29 @@ const PreviewButton = ({
                         </p>
                     </div>
                 </dt>
-            </a>
 
-            {removeButton && (
-                <button
-                    style={{ color: bgColor, border: `1px solid ${bgColor}` }}
-                    className={styles['del-btn']}
-                    onClick={() => removeButton()}
-                >
-                    O'chirish
-                </button>
-            )}
+                {removeButton && (
+                    <button
+                        style={{ color: bgColor, border: `1px solid ${bgColor}` }}
+                        className={styles['del-btn']}
+                        onClick={() => removeButton()}
+                    >
+                        O'chirish
+                    </button>
+                )}
 
-            {isUpdate && (
-                <button
-                    style={{ color: bgColor, border: `1px solid ${bgColor}` }}
-                    className={styles['del-btn']}
-                    onClick={() => update(index)}
-                >
-                    Yangilash
-                </button>
-            )}
-        </div>
+                {isUpdate && (
+                    <button
+                        style={{ color: bgColor, border: `1px solid ${bgColor}` }}
+                        className={styles['del-btn']}
+                        onClick={() => update(index)}
+                    >
+                        Yangilash
+                    </button>
+                )}
+            </div>
+        </Link>
+
     )
 }
 
