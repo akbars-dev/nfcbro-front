@@ -14,17 +14,19 @@ function AppTemplate({ update, pageId }) {
 	const [profilePic, setProfilePic] = useState("")
 	const [backroundPic, setBackroundPic] = useState("")
 	const [watermark, setWatermark] = useState(false)
-	const [buttons, setButtons] = useState(null)
+	const [buttons, setButtons] = useState([])
 	const navigate = useNavigate()
 
 	const removeButton = async (id, index) => {
 		if (!id) {
-			const data = await buttons.filter((button, bIndex) => bIndex !== index)
-			setButtons(data)
-			console.log(data)
+			console.log(index)
+			setButtons(buttons.filter((button, bIndex) => bIndex !== index))
+			console.log(buttons)
 		} else {
 			const data = await api.deleteButton(id)
-			setButtons(data)
+			console.log(data)
+
+			setButtons(data.data)
 			console.log(data)
 		}
 	}
@@ -64,8 +66,7 @@ function AppTemplate({ update, pageId }) {
 
 
 
-		window.open(`/${username}`, '_blank', 'noopener,noreferrer')
-		navigate("/admin/create")
+		navigate("/admin/message/created")
 
 		setName("")
 		setAbout("")
@@ -90,7 +91,7 @@ function AppTemplate({ update, pageId }) {
 			password
 		)
 
-		console.log(data)
+		navigate("/admin/message/updated")
 	}
 
 	if (update) {
@@ -139,6 +140,7 @@ function AppTemplate({ update, pageId }) {
 			setWatermark={setWatermark}
 			setButtons={setButtons}
 			watermark={watermark}
+			buttons={buttons}
 			createPage={createPage}
 		/>
 		<AppPreview
@@ -151,6 +153,7 @@ function AppTemplate({ update, pageId }) {
 			watermark={watermark}
 			buttons={buttons}
 			setButtons={setButtons}
+			removeButton={removeButton}
 		/>
 	</section>
 }

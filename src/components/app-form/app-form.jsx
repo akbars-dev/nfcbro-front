@@ -37,6 +37,8 @@ function AppForm({
 	buttons
 }) {
 
+	console.log('buttons', buttons)
+
 
 
 

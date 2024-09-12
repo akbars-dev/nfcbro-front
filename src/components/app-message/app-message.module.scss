@@ -1,0 +1,30 @@
+.app-message {
+	max-width: 500px;
+	background-color: #000;
+	border-radius: 10px;
+	border: 2px solid #fff;
+	margin: auto;
+	padding: 10px;
+	margin-top: 150px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	.message-title {
+		font-size: 20px;
+	}
+
+	.message-buttons {
+		padding: 10px 5px;
+
+		.button {
+			width: 100%;
+			padding: 10px 5px;
+			background-color: transparent;
+			border: 1px solid #fff;
+			color: #fff;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+	}
+}

@@ -7,6 +7,7 @@ import AdminLoginPage from './pages/AdminLogin'
 import CostumerLogin from './pages/CostumerLogin'
 import CostumerUpdate from './pages/CostumerUpdate'
 import Create from './pages/Create'
+import { Message } from './pages/Message'
 import PageProfile from './pages/PageProfile'
 import Update from './pages/Update'
 
@@ -24,6 +25,18 @@ function App() {
 					<Route path='dashboard' element={
 						<ProtectedRoute type="admin">
 							<Dashboard />
+						</ProtectedRoute>
+					} />
+
+					<Route path="message/created" element={
+						<ProtectedRoute type="admin">
+							<Message msg={'yaratildi'} />
+						</ProtectedRoute>
+					} />
+
+					<Route path="message/updated" element={
+						<ProtectedRoute type="admin">
+							<Message msg={'yangilandi'} />
 						</ProtectedRoute>
 					} />
 
