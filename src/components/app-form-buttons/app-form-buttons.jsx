@@ -2,10 +2,7 @@ import { useState } from 'react'
 import Select from "../select/select.jsx"
 import styles from './app-form-buttons.module.scss'
 
-function AppFormButtons({ setButtons, buttons, createPage, updatePage, update }) {
-
-    // Manage the buttons state locally
-
+function AppFormButtons({ setButtons, buttons, createPage, updatePage, update, loading }) {
     const [label, setLabel] = useState("")
     const [url, setUrl] = useState("")
     const [bgColor, setBgColor] = useState("")
@@ -18,8 +15,6 @@ function AppFormButtons({ setButtons, buttons, createPage, updatePage, update })
         bgColor: false,
         textColor: false
     })
-
-
 
     const addButton = () => {
         const newErrorState = {
@@ -37,15 +32,7 @@ function AppFormButtons({ setButtons, buttons, createPage, updatePage, update })
 
         const newButton = { label, url, bgColor, textColor, type, animation }
 
-        console.log("Current buttons:", buttons)
-
         const updatedButtons = [...buttons, newButton]
-
-        console.log(buttons)
-
-
-        console.log("Updated buttons:", updatedButtons)
-
         setButtons(updatedButtons)
 
         setLabel("")
@@ -55,7 +42,6 @@ function AppFormButtons({ setButtons, buttons, createPage, updatePage, update })
         setType(type)
         setAnimation(animation)
     }
-
 
     return (
         <div className={styles['app-form-buttons']}>
@@ -110,10 +96,13 @@ function AppFormButtons({ setButtons, buttons, createPage, updatePage, update })
             />
             <button onClick={addButton} className={styles['buttons-btn']}>Tugma qo'shish</button>
             {update ?
-                <button onClick={(e) => updatePage()} className={styles['create-btn']}>Yangilash</button> :
-                <button onClick={(e) => createPage()} className={styles['create-btn']}>Yaratish</button>
+                (loading ?
+                    <button className={styles['create-btn']} disabled>Yangilanish...</button> :
+                    <button onClick={updatePage} className={styles['create-btn']}>Yangilash</button>)
+                : (loading ?
+                    <button className={styles['create-btn']} disabled>Yaratilmoqda...</button> :
+                    <button onClick={createPage} className={styles['create-btn']}>Yaratish</button>)
             }
-
         </div>
     )
 }

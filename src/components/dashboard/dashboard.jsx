@@ -7,6 +7,7 @@ import styles from './dashboard.module.scss'
 function Dashboard() {
 	const [pages, setPages] = useState([])
 	const [searchQuery, setSearchQuery] = useState('')
+	const [loading, setLoading] = useState(true) // Add loading state
 	const navigate = useNavigate()
 
 	async function handleDelete(id) {
@@ -19,8 +20,14 @@ function Dashboard() {
 	}
 
 	async function fetchData() {
-		const data = await api.allPages()
-		setPages(data.data)
+		try {
+			const data = await api.allPages()
+			setPages(data.data)
+		} catch (error) {
+			console.error("Failed to fetch pages", error)
+		} finally {
+			setLoading(false) // Set loading to false once data is fetched
+		}
 	}
 
 	useEffect(() => {
@@ -50,21 +57,25 @@ function Dashboard() {
 				<button className={styles['dashboard-icon']}><img width={'20px'} src={searchIcon} alt="Search Icon" /></button>
 			</div>
 
-			<div className={styles['dashboard__cards']}>
-				{filteredPages.length > 0 ? (
-					filteredPages.map((page, index) => (
-						<div key={index} className={styles['dashboard__cards-item']}>
-							<span className={styles["item__title"]}>{page.name}</span>
-							<span className={styles['item__username']}><b>Username:</b> {page.username}</span>
+			{loading ? (
+				<p>Web saytlar yuklanmoqda...</p> // Display loading text
+			) : (
+				<div className={styles['dashboard__cards']}>
+					{filteredPages.length > 0 ? (
+						filteredPages.map((page, index) => (
+							<div key={index} className={styles['dashboard__cards-item']}>
+								<span className={styles["item__title"]}>{page.name}</span>
+								<span className={styles['item__username']}><b>Username:</b> {page.username}</span>
 
-							<button className={styles["item__btn"]} onClick={() => handleDelete(page.id)}>O'chirish</button>
-							<button className={styles["item__btn"]} onClick={() => handleEdit(page.username)}>Tahrirlash</button>
-						</div>
-					))
-				) : (
-					<p>Web saytlar mavjud emas</p>
-				)}
-			</div>
+								<button className={styles["item__btn"]} onClick={() => handleDelete(page.id)}>O'chirish</button>
+								<button className={styles["item__btn"]} onClick={() => handleEdit(page.username)}>Tahrirlash</button>
+							</div>
+						))
+					) : (
+						<p>Web saytlar mavjud emas</p>
+					)}
+				</div>
+			)}
 		</section>
 	)
 }

@@ -1,10 +1,9 @@
-import styles from './app-template.module.scss'
-
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../../http/api'
 import AppForm from '../app-form/app-form'
 import AppPreview from '../app-preview/app-preview'
+import styles from './app-template.module.scss'
 
 function AppTemplate({ update, pageId }) {
 	const [name, setName] = useState("")
@@ -15,22 +14,17 @@ function AppTemplate({ update, pageId }) {
 	const [backroundPic, setBackroundPic] = useState("")
 	const [watermark, setWatermark] = useState(false)
 	const [buttons, setButtons] = useState([])
+	const [loading, setLoading] = useState(false) // Add loading state
 	const navigate = useNavigate()
 
 	const removeButton = async (id, index) => {
 		if (!id) {
-			console.log(index)
 			setButtons(buttons.filter((button, bIndex) => bIndex !== index))
-			console.log(buttons)
 		} else {
 			const data = await api.deleteButton(id)
-			console.log(data)
-
 			setButtons(data.data)
-			console.log(data)
 		}
 	}
-
 
 	useEffect(() => {
 		async function fetchData() {
@@ -43,17 +37,15 @@ function AppTemplate({ update, pageId }) {
 			setBackroundPic(response.backroundPic)
 			setWatermark(response.watermark)
 			setButtons(response.buttons)
-
-			console.log(buttons)
-
 		}
 		if (pageId) {
 			fetchData()
 		}
-	}, [])
+	}, [pageId])
 
 	const createPage = async () => {
-		const data = await api.createPage(
+		setLoading(true) // Set loading to true
+		await api.createPage(
 			name,
 			about,
 			profilePic,
@@ -62,11 +54,14 @@ function AppTemplate({ update, pageId }) {
 			buttons,
 			username,
 			password
-		).then(() => navigate("/admin/message/created"))
+		)
+		setLoading(false) // Set loading to false
+		navigate("/admin/message/created")
 	}
 
 	const updatePage = async () => {
-		const data = await api.updatePage(
+		setLoading(true) // Set loading to true
+		await api.updatePage(
 			pageId,
 			name,
 			about,
@@ -76,11 +71,13 @@ function AppTemplate({ update, pageId }) {
 			buttons,
 			username,
 			password
-		).then(() => navigate("/admin/message/updated"))
+		)
+		setLoading(false) // Set loading to false
+		navigate("/admin/message/updated")
 	}
 
-	if (update) {
-		return <section className={styles['app-template']}>
+	return (
+		<section className={styles['app-template']}>
 			<AppForm
 				setName={setName}
 				setAbout={setAbout}
@@ -92,6 +89,7 @@ function AppTemplate({ update, pageId }) {
 				setButtons={setButtons}
 				watermark={watermark}
 				updatePage={updatePage}
+				createPage={createPage}
 				name={name}
 				about={about}
 				username={username}
@@ -100,6 +98,7 @@ function AppTemplate({ update, pageId }) {
 				backroundPic={backroundPic}
 				buttons={buttons}
 				update={update}
+				loading={loading} // Pass loading state to AppForm
 			/>
 			<AppPreview
 				name={name}
@@ -113,34 +112,7 @@ function AppTemplate({ update, pageId }) {
 				removeButton={removeButton}
 			/>
 		</section>
-	}
-	return <section className={styles['app-template']}>
-		<AppForm
-			setName={setName}
-			setAbout={setAbout}
-			setUsername={setUsername}
-			setPassword={setPassword}
-			setProfilePic={setProfilePic}
-			setBackroundPic={setBackroundPic}
-			setWatermark={setWatermark}
-			setButtons={setButtons}
-			watermark={watermark}
-			buttons={buttons}
-			createPage={createPage}
-		/>
-		<AppPreview
-			name={name}
-			about={about}
-			username={username}
-			password={password}
-			profilePic={profilePic}
-			backroundPic={backroundPic}
-			watermark={watermark}
-			buttons={buttons}
-			setButtons={setButtons}
-			removeButton={removeButton}
-		/>
-	</section>
+	)
 }
 
 export default AppTemplate

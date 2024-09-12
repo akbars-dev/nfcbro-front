@@ -1,19 +1,6 @@
-import styles from './app-form.module.scss'
-
-import AppFormButtons from "../app-form-buttons/app-form-buttons.jsx"
+import AppFormButtons from "../app-form-buttons/app-form-buttons"
 import AppFormProfile from '../app-form-profile/app-form-profile'
-
-
-// name,
-// 	about,
-// 	username,
-// 	password,
-// 	profilePic,
-// 	backroundPic,
-// 	watermark,
-// 	buttons,
-// 	createPage
-
+import styles from './app-form.module.scss'
 
 function AppForm({
 	setName,
@@ -26,6 +13,7 @@ function AppForm({
 	setButtons,
 	watermark,
 	createPage,
+	updatePage,
 	name,
 	about,
 	username,
@@ -33,15 +21,9 @@ function AppForm({
 	profilePic,
 	backroundPic,
 	update,
-	updatePage,
-	buttons
+	buttons,
+	loading // Add loading state here
 }) {
-
-	console.log('buttons', buttons)
-
-
-
-
 	return (
 		<div className={styles['app-form']}>
 			<AppFormProfile
@@ -50,8 +32,8 @@ function AppForm({
 				setUsername={setUsername}
 				setPassword={setPassword}
 				setProfilePic={setProfilePic}
-				setWatermark={setWatermark}
 				setBackroundPic={setBackroundPic}
+				setWatermark={setWatermark}
 				watermark={watermark}
 				name={name}
 				about={about}
@@ -66,6 +48,7 @@ function AppForm({
 				update={update}
 				setButtons={setButtons}
 				buttons={buttons}
+				loading={loading} // Pass loading state to AppFormButtons
 			/>
 		</div>
 	)
