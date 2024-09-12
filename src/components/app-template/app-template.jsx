@@ -62,20 +62,7 @@ function AppTemplate({ update, pageId }) {
 			buttons,
 			username,
 			password
-		)
-
-
-
-		navigate("/admin/message/created")
-
-		setName("")
-		setAbout("")
-		setUsername("")
-		setPassword("")
-		setProfilePic(null)
-		setBackroundPic(null)
-		setWatermark(false)
-		setButtons(null)
+		).then(() => navigate("/admin/message/created"))
 	}
 
 	const updatePage = async () => {
@@ -89,9 +76,7 @@ function AppTemplate({ update, pageId }) {
 			buttons,
 			username,
 			password
-		)
-
-		navigate("/admin/message/updated")
+		).then(() => navigate("/admin/message/updated"))
 	}
 
 	if (update) {
