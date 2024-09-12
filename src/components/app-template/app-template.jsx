@@ -17,6 +17,18 @@ function AppTemplate({ update, pageId }) {
 	const [buttons, setButtons] = useState(null)
 	const navigate = useNavigate()
 
+	const removeButton = async (id, index) => {
+		if (!id) {
+			const data = await buttons.filter((button, bIndex) => bIndex !== index)
+			setButtons(data)
+			console.log(data)
+		} else {
+			const data = await api.deleteButton(id)
+			setButtons(data)
+			console.log(data)
+		}
+	}
+
 
 	useEffect(() => {
 		async function fetchData() {
@@ -29,6 +41,9 @@ function AppTemplate({ update, pageId }) {
 			setBackroundPic(response.backroundPic)
 			setWatermark(response.watermark)
 			setButtons(response.buttons)
+
+			console.log(buttons)
+
 		}
 		if (pageId) {
 			fetchData()
@@ -76,7 +91,6 @@ function AppTemplate({ update, pageId }) {
 		)
 
 		console.log(data)
-
 	}
 
 	if (update) {
@@ -110,7 +124,7 @@ function AppTemplate({ update, pageId }) {
 				backroundPic={backroundPic}
 				watermark={watermark}
 				buttons={buttons}
-				setButtons={setButtons}
+				removeButton={removeButton}
 			/>
 		</section>
 	}

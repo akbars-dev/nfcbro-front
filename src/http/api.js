@@ -11,6 +11,11 @@ class Api {
 		return response.data
 	}
 
+	async deleteButton(id) {
+		const response = await axios.delete(this.baseUrl + `/pages/delete-button/${id}`)
+		return response.data
+	}
+
 	async allPages() {
 		const response = await axios.get(this.baseUrl + '/pages/all')
 		return response.data

@@ -10,6 +10,7 @@ const PreviewButton = ({
     update,
     removeButton,
     index,
+    btnId,
     isUpdate
 }) => {
     // Determine the animation class based on the animation prop
@@ -38,7 +39,7 @@ const PreviewButton = ({
                 <button
                     style={{ color: bgColor, border: `1px solid ${bgColor}` }}
                     className={styles['del-btn']}
-                    onClick={() => removeButton(index)}
+                    onClick={() => removeButton()}
                 >
                     O'chirish
                 </button>

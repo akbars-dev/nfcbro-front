@@ -2,10 +2,9 @@ import { useState } from 'react'
 import Select from "../select/select.jsx"
 import styles from './app-form-buttons.module.scss'
 
-function AppFormButtons({ setButtons, createPage, updatePage, update }) {
+function AppFormButtons({ setButtons, buttons, createPage, updatePage, update }) {
 
     // Manage the buttons state locally
-    const [buttons, updateButtons] = useState([])
 
     const [label, setLabel] = useState("")
     const [url, setUrl] = useState("")
@@ -38,19 +37,25 @@ function AppFormButtons({ setButtons, createPage, updatePage, update }) {
 
         const newButton = { label, url, bgColor, textColor, type, animation }
 
-        // Update the local buttons array and the parent state
+        console.log("Current buttons:", buttons)
+
         const updatedButtons = [...buttons, newButton]
-        updateButtons(updatedButtons)
+
+        console.log(buttons)
+
+
+        console.log("Updated buttons:", updatedButtons)
+
         setButtons(updatedButtons)
 
-        // Clear the input fields after adding the button
         setLabel("")
         setUrl("")
         setBgColor("")
         setTextColor("")
-        setType("tugma")
-        setAnimation("animation-1")
+        setType(type)
+        setAnimation(animation)
     }
+
 
     return (
         <div className={styles['app-form-buttons']}>

@@ -9,13 +9,10 @@ function AppPreview({
 	backgroundPic,
 	watermark,
 	buttons,
-	setButtons
+	removeButton
 }) {
-	const removeButton = (index) => {
-		console.log(index)
+	// Function to remove a button by index
 
-		setButtons(buttons => buttons.filter((_, i) => i !== index))
-	}
 
 	return (
 		<div className={styles['app-preview']}>
@@ -44,24 +41,20 @@ function AppPreview({
 							textColor={button.textColor}
 							type={button.type}
 							animation={button.animation}
-							removeButton={removeButton}
-							index={index}
+							removeButton={() => removeButton(button.id, index)}  // Call removeButton with index
 						/>
 					))}
 				</div>
 			)}
 
 			{/* Always render watermark with the provided value or a default message */}
-
-			{watermark ?
+			{watermark ? (
 				<div className={styles['watermark']}>
 					<span className={styles['watermark-text']}>
 						Bu sayt ZET GROUP tomonidan yasalgan. Buyurtma uchun: +998 77 777 27 87
 					</span>
-				</div> : ''
-			}
-
-
+				</div>
+			) : null}
 		</div>
 	)
 }

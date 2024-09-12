@@ -34,6 +34,7 @@ function AppForm({
 	backroundPic,
 	update,
 	updatePage,
+	buttons
 }) {
 
 
@@ -62,6 +63,7 @@ function AppForm({
 				createPage={createPage}
 				update={update}
 				setButtons={setButtons}
+				buttons={buttons}
 			/>
 		</div>
 	)
